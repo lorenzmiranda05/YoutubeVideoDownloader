@@ -60,7 +60,7 @@
     ```
 1. Add remote repository:
     ```powershell
-    git remote add origin git@github.com:lorenzmiranda05/Tkinter.git
+    git remote add origin git@github.com:lorenzmiranda05/YoutubeVideoDownloader.git
     <# Syntax: git remote add origin <SSH Remote URL of your GitHub Repository> #>
     ```
 1. Update remote repository with an upstream (tracking) reference:
@@ -83,7 +83,7 @@
     ```
     Output:
     ```powershell    
-    Package            Version
+    Package    Version
     ---------- ---------
     pip        22.2.2
     pytube     12.1.0
@@ -100,20 +100,15 @@
 <br  />
 
 **Image Sources**
-*  Finn, Address Book and Smiling Sun icons by [Icons8][Icons8]
+*  Youtube icon by [Icons8][Icons8]
     <br  />
-    [![github](https://img.icons8.com/fluency/60/finn.png)][Finn]
-    [![github](https://img.icons8.com/officel/60/address-book.png)][Address Book]
-    [![github](https://img.icons8.com/clouds/60/smiling-sun.png)][Smiling Sun]
+    [![github](https://img.icons8.com/doodle/48/youtube-play--v2.png)][Youtube]
 * Converted to .ico using [FreeConvert][FreeConvert]
 
 
 <!-- Reusable and Invisible URL Definitions  -->
-[freeCodeCamp.org]: https://www.youtube.com/watch?v=YXPyB4XeYLA
 [Github]: https://github.com
-[Finn]: https://icons8.com/icon/NDfYUVJQNWOx/finn
-[Address Book]: https://icons8.com/icon/RIEURT0p5vAu/address-book
-[Smiling Sun]: https://icons8.com/icon/7UYg9itOH2r7/smiling-sun
+[Youtube]: https://icons8.com/icon/szxM3fi4e37N/youtube
 [Icons8]: https://icons8.com
 [FreeConvert]: https://www.freeconvert.com/png-to-ico
 [Tech With Tim]: https://www.youtube.com/watch?v=UZX5kH72Yx4
