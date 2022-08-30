@@ -107,7 +107,7 @@
 1. Compile main.py into one executable file that does not show the console during run-time:
     ```powershell
     pyinstaller --onefile -windowed --icon="d:\DEV\YoutubeVideoDownloader\Assets\Images\Youtube\icons8-youtube-60.ico" --name="YouTube Downloader" --version-file=FILE main.py
-    <# Syntax: pyinstaller --onefile -windowed --icon=<.ico file path> --name=<.exe file name> <scriptName.py> #>
+    <# Syntax: pyinstaller --onefile -windowed --icon=<.ico file path> --name=<.exe file name> --version-file=<file containing application metadata> <scriptName.py> #>
     ```
 1. In the directory containing main.py file, delete the following:
     * build/ folder
