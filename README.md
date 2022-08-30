@@ -73,7 +73,7 @@
 <br  />
 
 **Package Setup**
-1. Install Pillow:
+1. Install Pytube:
     ```powershell
     pip install pytube
     ```
