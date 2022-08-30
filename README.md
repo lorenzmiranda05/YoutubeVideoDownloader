@@ -93,7 +93,7 @@
 <br  />
 
 **Tasks**
-* [ ] Create a Youtube Downloader tkinter application
+* [x] Create a Youtube Downloader tkinter application
 * [ ] Compile a tkinter application into a .exe file
 * [ ] Generate an installer for the tkinter .exe application
 
