@@ -115,12 +115,44 @@
 1. Move the dist/YouTube Video Downloader.exe file into the directory containing main.py file
 1. Delete the dist/ folder
 
+
+<br  />
+
+**Generate an installer**
+1. Download the NSIS: Nullsoft Scriptable Install System installer from [NSIS SourceForge][NSIS]
+1. Install the NSIS: Nullsoft Scriptable Install System applicaton
+1. Create a copy of the d:\DEV\YoutubeVideoDownloader folder
+1. In the copy, delete the following:
+    * .git folder
+    * .gitignore file
+1. Compress the d:\DEV\YoutubeVideoDownloader folder into a .zip file
+1. Open the NSIS app
+1. Click Installer based on .ZIP file
+    <br  />
+    <br  />
+    ![github](https://raw.githubusercontent.com/lorenzmiranda05/YoutubeVideoDownloader/main/Assets/Images/NSIS/01%20NSIS%20Menu.png)
+1. Click Open... and select the YoutubeVideoDownloader.zip file to load the files
+    <br  />
+    <br  />
+    ![github](https://raw.githubusercontent.com/lorenzmiranda05/YoutubeVideoDownloader/main/Assets/Images/NSIS/02%20Zip2Exe%200.38.png)
+1. Set the Installer name as YoutubeVideoDownloaderInstaller
+1. Set the Output EXE File as YoutubeVideoDownloaderInstaller.exe
+    <br  />
+    <br  />
+    ![github](https://raw.githubusercontent.com/lorenzmiranda05/YoutubeVideoDownloader/main/Assets/Images/NSIS/03%20Zip2Exe%200.38.png)
+1. Click Generate
+1. Click Close
+    <br  />
+    <br  />
+    ![github](https://raw.githubusercontent.com/lorenzmiranda05/YoutubeVideoDownloader/main/Assets/Images/NSIS/04%20Zip2Exe%200.38.png)
+1. Close NSIS
+
 <br  />
 
 **Tasks**
 * [x] Create a Youtube Downloader tkinter application
 * [x] Compile a tkinter application into a .exe file
-* [ ] Generate an installer for the tkinter .exe application
+* [x] Generate an installer for the tkinter .exe application
 
 <br  />
 
@@ -137,3 +169,4 @@
 [Icons8]: https://icons8.com
 [FreeConvert]: https://www.freeconvert.com/png-to-ico
 [Tech With Tim]: https://www.youtube.com/watch?v=UZX5kH72Yx4
+[NSIS]: https://nsis.sourceforge.io/Download
