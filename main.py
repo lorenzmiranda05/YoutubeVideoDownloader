@@ -133,7 +133,7 @@ def populateDownloadDetails():
 def showDownloadDetailsTopLevel():        
     global downloadDetailsTopLevel
     downloadDetailsTopLevel = tk.Toplevel()
-    downloadDetailsTopLevel.title("Youtube Download Details")
+    downloadDetailsTopLevel.title("Download Details")
     downloadDetailsTopLevel.iconbitmap(iconFile)
     
     downloadDetailsFrame = tk.LabelFrame(downloadDetailsTopLevel, padx = 10, pady = 10)
