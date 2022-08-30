@@ -8,7 +8,7 @@ import threading
 iconFile = r"Assets\Images\Youtube\icons8-youtube-100.ico"
 
 root = tk.Tk()
-root.title("Youtube Downloader 1.0")
+root.title("Youtube Video Downloader")
 root.iconbitmap(iconFile)
 
 def initializeWidgets():
