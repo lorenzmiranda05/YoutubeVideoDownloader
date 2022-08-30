@@ -77,24 +77,49 @@
     ```powershell
     pip install pytube
     ```
+1. Install Pyinstaller:
+    ```powershell
+    pip install pyinstaller
+    ```
 1. Check installed packages:
     ```powershell
     pip list
     ```
     Output:
     ```powershell    
-    Package    Version
-    ---------- ---------
-    pip        22.2.2
-    pytube     12.1.0
-    setuptools 58.1.0
+    Package                   Version
+   ------------------------- ---------
+    altgraph                  0.17.2
+    future                    0.18.2
+    pefile                    2022.5.30
+    pip                       22.2.2
+    pyinstaller               5.3
+    pyinstaller-hooks-contrib 2022.9
+    pytube                    12.1.0
+    pywin32-ctypes            0.2.0
+    setuptools                58.1.0
     ```
+
+
+<br  />
+
+**Compile to .exe file**
+1. Compile main.py into one executable file that does not show the console during run-time:
+    ```powershell
+    pyinstaller --onefile -windowed --icon="d:\DEV\YoutubeVideoDownloader\Assets\Images\Youtube\icons8-youtube-60.ico" --name="YouTube Downloader" --version-file=FILE main.py
+    <# Syntax: pyinstaller --onefile -windowed --icon=<.ico file path> --name=<.exe file name> <scriptName.py> #>
+    ```
+1. In the directory containing main.py file, delete the following:
+    * build/ folder
+    * YouTube Downloader.spec file
+1. Move the dist/YouTube Downloader.exe file into the directory containing main.py file
+1. Delete the dist/ folder
 
 <br  />
 
 **Tasks**
 * [x] Create a Youtube Downloader tkinter application
-* [ ] Compile a tkinter application into a .exe file
+* [x] Compile a tkinter application into a .exe file
 * [ ] Generate an installer for the tkinter .exe application
 
 <br  />
