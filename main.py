@@ -3,6 +3,7 @@ from tkinter import filedialog
 from tkinter import messagebox
 import validation
 import youtube
+import threading
 
 iconFile = r"Assets\Images\Youtube\icons8-youtube-100.ico"
 
@@ -29,6 +30,7 @@ def initializeWidgets():
     pathValueButton = tk.Button(frame, text = "...", command = setPathValueEntry, padx = 5)
     pathValueButton.grid(row = 1, column = 2, padx = 5, pady = 5)
     
+    global downloadButton
     downloadButton = tk.Button(frame, text = "Download", command = downloadVideo, padx = 5)
     downloadButton.grid(row = 2, column = 0, columnspan = 3, padx = 5, pady = 5)
     
@@ -58,6 +60,11 @@ def validateEntries():
         return False
     return True
    
+
+def setStatusLabel(status: str):
+    global statusLabel
+    statusLabel.config(text = status)
+
         
 def downloadVideo():
     if validateEntries() == False:
@@ -68,7 +75,7 @@ def downloadVideo():
     showDownloadDetailsTopLevel()
     saveUrlAndFilePath()
     disableFrameChildren(frame)
-    
+    threading.Thread(target = populateDownloadDetails).start()
 
 def saveUrlAndFilePath():
     global urlValue
@@ -108,12 +115,22 @@ def enableFrameChildren(frame: tk.Frame):
     for child in frame.winfo_children():
         child.config(state = "normal")
 
-
-def showDownloadDetailsTopLevel():    
+def populateDownloadDetails():
     videoList = []
     totalFileSize = 0
-    videoList, totalFileSize = getDownloadDetails()    
+    videoList, totalFileSize = getDownloadDetails()
     
+    global totalFileSizeValueLabel
+    totalFileSizeValueLabel.config(text = f"~{ totalFileSize } MB")
+    global videosValueLabel
+    videosValueLabel.config(text = f"{ len(videoList) }")
+    global okButton
+    okButton.config(command = lambda: okDownload(videoList, totalFileSize), state = "normal")
+    global cancelButton
+    cancelButton.config(state = "normal")
+    
+
+def showDownloadDetailsTopLevel():        
     global downloadDetailsTopLevel
     downloadDetailsTopLevel = tk.Toplevel()
     downloadDetailsTopLevel.title("Youtube Download Details")
@@ -124,21 +141,30 @@ def showDownloadDetailsTopLevel():
 
     totalFileSizeLabel = tk.Label(downloadDetailsFrame, text = "Total File Size:")
     totalFileSizeLabel.grid(row = 0, column = 0, sticky = tk.E, padx = 5, pady = 5)
-    totalFileSizeValueLabel = tk.Label(downloadDetailsFrame, text = f"~{ totalFileSize } MB")
+    global totalFileSizeValueLabel
+    # totalFileSizeValueLabel = tk.Label(downloadDetailsFrame, text = f"~{ totalFileSize } MB")
+    totalFileSizeValueLabel = tk.Label(downloadDetailsFrame, text = "Retrieving...")
     totalFileSizeValueLabel.grid(row = 0, column = 1, sticky = tk.E, columnspan = 2, padx = 5, pady = 5)
 
     videosLabel = tk.Label(downloadDetailsFrame, text = "Video(s):")
     videosLabel.grid(row = 1, column = 0, sticky = tk.E, padx = 5, pady = 5)
-    videosValueLabel = tk.Label(downloadDetailsFrame, text = f"{ len(videoList) }")
+    global videosValueLabel
+    # videosValueLabel = tk.Label(downloadDetailsFrame, text = f"{ len(videoList) }")
+    videosValueLabel = tk.Label(downloadDetailsFrame, text = "Retrieving...")
     videosValueLabel.grid(row = 1, column = 1, sticky = tk.E, columnspan = 2, padx = 5, pady = 5)
     
     questionLabel = tk.Label(downloadDetailsFrame, text = "Continue to download?")
     questionLabel.grid(row = 2, column = 0, columnspan = 3, padx = 5, pady = 10)
     
-    okButton = tk.Button(downloadDetailsFrame, text = "OK", padx = 15, command = lambda: okDownload(videoList, totalFileSize))
+    global okButton
+    # okButton = tk.Button(downloadDetailsFrame, text = "OK", padx = 15, command = lambda: okDownload(videoList, totalFileSize))
+    okButton = tk.Button(downloadDetailsFrame, text = "OK", padx = 15)
     okButton.grid(row = 3, column = 0, sticky = tk.E, padx = 5, pady = 5)
+    okButton.config(state = "disabled")
+    global cancelButton
     cancelButton = tk.Button(downloadDetailsFrame, text = "Cancel", padx = 15, command = cancelDownload)
     cancelButton.grid(row = 3, column = 1, columnspan = 2, padx = 5, pady = 5)
+    cancelButton.config(state = "disabled")
     
     downloadDetailsTopLevel.focus()
 
@@ -151,22 +177,18 @@ def cancelDownload():
 
 
 def okDownload(videoList, totalFileSize):
-    enableFrameChildren(frame)
     global downloadDetailsTopLevel
     downloadDetailsTopLevel.destroy()
-    continueDownloadVideo(videoList, totalFileSize)
+    root.focus()
+    threading.Thread(target = lambda: continueDownloadVideo(videoList, totalFileSize)).start()
 
     
 def continueDownloadVideo(videoList, totalFileSize):
     for index, video in enumerate(videoList):
         setStatusLabel(f"Downloading video { index + 1 } of { len(videoList) }")
         youtube.downloadVideo(video, pathValueEntry.get())
-        setStatusLabel(f"Done | Total File Size: ~{ totalFileSize }MB | Video(s): { len(videoList)}")
-
-
-def setStatusLabel(status: str):
-    global statusLabel
-    statusLabel.config(text = status) 
+    setStatusLabel(f"Done | Total File Size: ~{ totalFileSize }MB | Video(s): { len(videoList)}")
+    enableFrameChildren(frame)
 
 initializeWidgets() 
 root.mainloop()
