@@ -187,6 +187,7 @@ def continueDownloadVideo(videoList, totalFileSize):
     for index, video in enumerate(videoList):
         setStatusLabel(f"Downloading video { index + 1 } of { len(videoList) }")
         youtube.downloadVideo(video, pathValueEntry.get())
+        youtube.downloadSubtitle(video, pathValueEntry.get())
     setStatusLabel(f"Done | Total File Size: ~{ totalFileSize }MB | Video(s): { len(videoList)}")
     enableFrameChildren(frame)
 
