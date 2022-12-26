@@ -153,6 +153,7 @@
 * [x] Create a Youtube Downloader tkinter application
 * [x] Compile a tkinter application into a .exe file
 * [x] Generate an installer for the tkinter .exe application
+* [x] Add subtitle in the download files in .srt file extension
 
 <br  />
 
@@ -170,3 +171,4 @@
 [FreeConvert]: https://www.freeconvert.com/png-to-ico
 [Tech With Tim]: https://www.youtube.com/watch?v=UZX5kH72Yx4
 [NSIS]: https://nsis.sourceforge.io/Download
+[Download Subtitles From Youtube in Python]: https://www.youtube.com/watch?v=EG8cvSJFCc0
