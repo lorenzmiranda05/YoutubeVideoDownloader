@@ -30,9 +30,15 @@ def initializeWidgets():
     pathValueButton = tk.Button(frame, text = "...", command = setPathValueEntry, padx = 5)
     pathValueButton.grid(row = 1, column = 2, padx = 5, pady = 5)
     
+    global downloadWithSubtitles
+    downloadWithSubtitles = tk.BooleanVar(value = False)
+    subtitleCheckbutton = tk.Checkbutton(frame, text = "Download English Subtitles When Available",
+                                         variable = downloadWithSubtitles)
+    subtitleCheckbutton.grid(row = 2, column = 1, columnspan = 2, sticky = tk.W, padx = 5, pady = 5)
+        
     global downloadButton
     downloadButton = tk.Button(frame, text = "Download", command = downloadVideo, padx = 5)
-    downloadButton.grid(row = 2, column = 0, columnspan = 3, padx = 5, pady = 5)
+    downloadButton.grid(row = 3, column = 0, columnspan = 3, padx = 5, pady = 5)
     
     global statusLabel
     statusLabel = tk.Label(root, text = "")
@@ -76,6 +82,7 @@ def downloadVideo():
     saveUrlAndFilePath()
     disableFrameChildren(frame)
     threading.Thread(target = populateDownloadDetails).start()
+
 
 def saveUrlAndFilePath():
     global urlValue
@@ -187,7 +194,8 @@ def continueDownloadVideo(videoList, totalFileSize):
     for index, video in enumerate(videoList):
         setStatusLabel(f"Downloading video { index + 1 } of { len(videoList) }")
         youtube.downloadVideo(video, pathValueEntry.get())
-        youtube.downloadSubtitle(video, pathValueEntry.get())
+        if downloadWithSubtitles.get():
+            youtube.downloadSubtitle(video, pathValueEntry.get())
     setStatusLabel(f"Done | Total File Size: ~{ totalFileSize }MB | Video(s): { len(videoList)}")
     enableFrameChildren(frame)
 
