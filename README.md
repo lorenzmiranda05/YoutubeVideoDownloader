@@ -154,7 +154,7 @@
 * [x] Compile a tkinter application into a .exe file
 * [x] Generate an installer for the tkinter .exe application
 * [x] Add checkbutton to include subtitle files in the download
-* [x] Add format downloaded subtitle files in SubRip (.srt) format
+* [x] Format downloaded subtitle files in SubRip (.srt)
 * [ ] Recompile a tkinter application into a .exe file
 * [ ] Regenerate an installer for the tkinter .exe application
 
