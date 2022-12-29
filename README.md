@@ -153,7 +153,10 @@
 * [x] Create a Youtube Downloader tkinter application
 * [x] Compile a tkinter application into a .exe file
 * [x] Generate an installer for the tkinter .exe application
-* [x] Add subtitle in the download files in .srt file extension
+* [x] Add checkbutton to include subtitle files in the download
+* [x] Add format downloaded subtitle files in SubRip (.srt) format
+* [ ] Recompile a tkinter application into a .exe file
+* [ ] Regenerate an installer for the tkinter .exe application
 
 <br  />
 
